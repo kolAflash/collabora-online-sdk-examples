@@ -3,12 +3,12 @@
 
 - This example requires [Python][] version 3.6 or higher
 - You also need to install with [pip][] the following packages:
-  * [Django][] 3.1.7
-  * requests 2.25.1
-  * lxml 4.6.2
+  * [Django][] 5.2.4
+  * requests 2.32.4
+  * lxml 6.0.0
 - For SSL support you need in addition:
   * django-extensions
-  * Werkzeug 2.0 (later versions are incompatible)
+  * Werkzeug 2.0 (later versions are incompatible)  // TODO: upgrade to => 2.3.8 => 3.1.3
   * pyOpenSSL
 - These are only the requirements to run this example as-is.
 

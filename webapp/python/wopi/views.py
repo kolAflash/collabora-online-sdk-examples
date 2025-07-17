@@ -11,7 +11,7 @@ from django.views import View
 #  https://HOSTNAME/wopi/files/<document_id>
 @require_GET
 def check_file_info(request, file_id):
-    print(f"CheckFileInfo: file id: {file_id}, access token: {request.GET['access_token']}")
+    print(f"CheckFileInfo: file id: {file_id}, access token: {request.GET.get('access_token')}")
     # test.txt is just a fake text file
     # the Size property is the length of the string
     # returned by the wopi GetFile endpoint
@@ -21,6 +21,8 @@ def check_file_info(request, file_id):
         'UserId': 1,
         'UserCanWrite': True,
     }
+    # 'EnableInsertRemoteImage': true,
+    # TODO EnableInsertRemoteImage seems not needed
     return JsonResponse(res)
 
 
@@ -33,7 +35,7 @@ class FileContentView(View):
     #  https://HOSTNAME/wopi/files/<document_id>/contents
     @staticmethod
     def get(request, file_id):
-        print(f"GetFile: file id: {file_id}, access token: {request.GET['access_token']}")
+        print(f"GetFile: file id: {file_id}, access token: {request.GET.get('access_token')}")
         # we just return the content of a fake text file
         # in a real case you should use the file id
         # for retrieving the file from the storage and
@@ -48,7 +50,7 @@ class FileContentView(View):
     #  https://HOSTNAME/wopi/files/<document_id>/contents
     @staticmethod
     def post(request, file_id):
-        print(f"PutFile: file id: {file_id}, access token: {request.GET['access_token']}")
+        print(f"PutFile: file id: {file_id}, access token: {request.GET.get('access_token')}")
         if not request.body:
             return HttpResponseNotFound('Not possible to get the file content.')
         content = request.read()

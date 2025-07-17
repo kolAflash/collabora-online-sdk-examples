@@ -1,0 +1,9 @@
+[package]
+name = "collabora-online-integration-example"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+curl = "0.4.44"
+sxd-document = "0.3.2"
+sxd-xpath = "0.4.2"
